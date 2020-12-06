@@ -1,30 +1,27 @@
-import Vue from "vue";
-import VueRouter from "vue-router";
-import Vuex from "vuex";
+import { createApp } from "vue";
+import { createRouter, createWebHistory } from "vue-router";
+import { createStore } from "vuex";
 
 import App from "./App.vue";
 import { hslStore } from "./hsl-store.js";
 import { routes } from "./routes.js";
 import { FETCH_HSL } from "./hsl-store.actions.js";
 
-Vue.config.productionTip = false;
+const app = createApp(App)
 
-Vue.use(VueRouter);
-Vue.use(Vuex);
-
-const router = new VueRouter({
-  mode: "history",
+const router = createRouter({
+  history: createWebHistory(),
   routes,
 });
 
-const store = new Vuex.Store({
+app.use(router);
+
+const store = createStore({
   ...hslStore,
 });
 
+app.use(store);
+
 store.dispatch(FETCH_HSL);
 
-new Vue({
-  router,
-  store,
-  render: (h) => h(App),
-}).$mount("#app");
+app.mount('#app')

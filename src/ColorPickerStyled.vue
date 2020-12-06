@@ -135,7 +135,8 @@ Vue.use(ColorPicker);</code></pre>
 
 <script>
 import { mapActions, mapGetters } from "vuex"
-import { ColorPicker } from "vue-accessible-color-picker";
+// import { ColorPicker } from "vue-accessible-color-picker";
+import ColorPicker from "../../../packages/vue-accessible-color-picker/src/ColorPicker.vue";
 
 import { UPDATE_HSL } from "./hsl-store.actions.js"
 
