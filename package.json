@@ -8,7 +8,7 @@
   "dependencies": {
     "core-js": "^3.8.1",
     "vue": "^2.6.12",
-    "vue-accessible-color-picker": "^1.0.1",
+    "vue-accessible-color-picker": "^1.1.2",
     "vue-router": "^3.4.9",
     "vuex": "^3.6.0"
   },
