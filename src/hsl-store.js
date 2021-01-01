@@ -7,10 +7,6 @@ export const hslStore = {
     hsl: null,
   },
 
-  getters: {
-    hsl: (state) => state.hsl,
-  },
-
   actions: {
     [FETCH_HSL]({ commit }) {
       const hsl = JSON.parse(window.sessionStorage.getItem("hsl"));

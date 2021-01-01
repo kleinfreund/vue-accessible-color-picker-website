@@ -35,7 +35,7 @@
 </template>
 
 <script>
-import { mapActions, mapGetters } from "vuex"
+import { mapState } from "vuex"
 
 import { UPDATE_HSL } from "./hsl-store.actions.js"
 
@@ -43,7 +43,9 @@ export default {
   name: 'App',
 
   computed: {
-    ...mapGetters(['hsl'])
+    ...mapState({
+      hsl: (state) => state.hsl,
+    }),
   },
 
   created() {
@@ -52,7 +54,7 @@ export default {
       const dayOfTheYear = (Date.UTC(date.getFullYear(), date.getMonth(), date.getDate()) - Date.UTC(date.getFullYear(), 0, 0)) / 24 / 60 / 60 / 1000
 
       const hsl = { h: dayOfTheYear / 360, s: 1, l: 0.5, a: 1 }
-      this[UPDATE_HSL](hsl)
+      this.$store.dispatch(UPDATE_HSL, hsl)
     }
   },
 
@@ -70,10 +72,6 @@ export default {
       }
     }
   },
-
-  methods: {
-    ...mapActions([UPDATE_HSL])
-  }
 }
 </script>
 

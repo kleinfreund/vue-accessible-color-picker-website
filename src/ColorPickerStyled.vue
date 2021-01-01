@@ -134,7 +134,7 @@ Vue.use(ColorPicker);</code></pre>
 </template>
 
 <script>
-import { mapActions, mapGetters } from "vuex"
+import { mapState } from "vuex"
 import { ColorPicker } from "vue-accessible-color-picker";
 
 import { UPDATE_HSL } from "./hsl-store.actions.js"
@@ -145,14 +145,14 @@ export default {
   },
 
   computed: {
-    ...mapGetters(['hsl'])
+    ...mapState({
+      hsl: (state) => state.hsl,
+    }),
   },
 
   methods: {
-    ...mapActions([UPDATE_HSL]),
-
     onColorChange(colorData) {
-      this[UPDATE_HSL](colorData.colors.hsl)
+      this.$store.dispatch(UPDATE_HSL, colorData.colors.hsl)
     }
   }
 }
