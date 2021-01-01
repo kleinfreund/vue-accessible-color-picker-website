@@ -1,6 +1,17 @@
 {
   "name": "vue-accessible-color-picker-demo",
   "version": "0.1.0",
+  "license": "MIT",
+  "description": "Demo website for the vue-accessible-color-picker package",
+  "author": {
+    "name": "Philipp Rudloff",
+    "url": "https://kleinfreund.de"
+  },
+  "homepage": "https://vue-accessible-color-picker.netlify.app",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/kleinfreund/vue-accessible-color-picker-website.git"
+  },
   "scripts": {
     "start": "vue-cli-service serve",
     "build": "vue-cli-service build"
