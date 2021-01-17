@@ -1,6 +1,6 @@
 {
   "name": "vue-accessible-color-picker-website",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "license": "MIT",
   "description": "Demo website for the vue-accessible-color-picker package",
   "author": {
@@ -17,13 +17,14 @@
     "build": "vue-cli-service build"
   },
   "dependencies": {
-    "vue": "^2.6.12",
-    "vue-accessible-color-picker": "^1.1.2",
-    "vue-router": "^3.4.9",
-    "vuex": "^3.6.0"
+    "vue": "^3.0.5",
+    "vue-accessible-color-picker": "^2.0.0",
+    "vue-router": "^4.0.3",
+    "vuex": "^4.0.0-rc.2"
   },
   "devDependencies": {
-    "@vue/cli-service": "^4.5.9",
-    "vue-template-compiler": "^2.6.12"
+    "@vue/cli-plugin-babel": "^4.5.10",
+    "@vue/cli-service": "^4.5.10",
+    "@vue/compiler-sfc": "^3.0.5"
   }
 }

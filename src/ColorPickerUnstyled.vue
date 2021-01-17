@@ -15,11 +15,25 @@
 
     <h2>Usage</h2>
 
-    <p>In your Vue project’s <code>main.js</code> (i.e. where you call <code>new Vue(…)</code>), import the <code>ColorPicker</code> component and register it with <code>Vue.use</code>.</p>
+    <h3>Register component locally</h3>
 
-    <pre><code>import ColorPicker from "vue-accessible-color-picker/dist/vue-accessible-color-picker-unstyled";
+    <p>In a Vue single file component (SFC), import the <code>ColorPicker</code> plugin and register the component via the <code>components</code> property on the Vue instance.</p>
 
-Vue.use(ColorPicker);</code></pre>
+    <pre><code>import { ColorPicker } from "vue-accessible-color-picker/dist/vue-accessible-color-picker-unstyled";
+
+export default {
+  components: {
+    ColorPicker,
+  },
+}</code></pre>
+
+    <h3>Register component globally</h3>
+
+    <p>In your Vue project’s <code>main.js</code> file (i.e. where you call <code>app.mount</code>), import the <code>ColorPicker</code> plugin and register the component with <code>app.component</code>.</p>
+
+    <pre><code>import { ColorPicker } from "vue-accessible-color-picker/dist/vue-accessible-color-picker-unstyled";
+
+app.component("ColorPicker", ColorPicker);</code></pre>
 
     <p><b>HTML</b>:</p>
 
