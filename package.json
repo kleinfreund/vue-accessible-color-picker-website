@@ -18,7 +18,7 @@
   },
   "dependencies": {
     "vue": "^3.0.7",
-    "vue-accessible-color-picker": "^2.0.0",
+    "vue-accessible-color-picker": "^3.0.0",
     "vue-router": "^4.0.5",
     "vuex": "^4.0.0"
   },
