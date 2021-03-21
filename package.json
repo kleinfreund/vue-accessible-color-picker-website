@@ -17,10 +17,10 @@
     "build": "vue-cli-service build"
   },
   "dependencies": {
-    "vue": "^3.0.5",
+    "vue": "^3.0.7",
     "vue-accessible-color-picker": "^2.0.0",
-    "vue-router": "^4.0.3",
-    "vuex": "^4.0.0-rc.2"
+    "vue-router": "^4.0.5",
+    "vuex": "^4.0.0"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "^4.5.12",
