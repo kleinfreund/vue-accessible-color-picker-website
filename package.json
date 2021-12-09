@@ -17,7 +17,7 @@
     "build": "vue-cli-service build"
   },
   "dependencies": {
-    "vue": "^3.2.21",
+    "vue": "^3.2.24",
     "vue-accessible-color-picker": "^3.0.1",
     "vue-router": "^4.0.5",
     "vuex": "^4.0.0"
@@ -25,6 +25,6 @@
   "devDependencies": {
     "@vue/cli-plugin-babel": "^4.5.15",
     "@vue/cli-service": "^4.5.15",
-    "@vue/compiler-sfc": "^3.2.21"
+    "@vue/compiler-sfc": "^3.2.24"
   }
 }
