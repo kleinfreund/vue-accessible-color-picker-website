@@ -26,9 +26,15 @@
           height="15"
           viewBox="0 0 15 15"
         >
-          <path d="M5 0v2H1v13h12v-3h-1v2H2V5h10v3h1V2H9V0zm1 1h2v2h3v1H3V3h3z" fill="currentColor" />
+          <path
+            d="M5 0v2H1v13h12v-3h-1v2H2V5h10v3h1V2H9V0zm1 1h2v2h3v1H3V3h3z"
+            fill="currentColor"
+          />
 
-          <path d="M10 7v2h5v2h-5v2l-3-3zM3 6h5v1H3zm0 2h3v1H3zm0 2h3v1H3zm0 2h5v1H3z" fill="currentColor" />
+          <path
+            d="M10 7v2h5v2h-5v2l-3-3zM3 6h5v1H3zm0 2h3v1H3zm0 2h3v1H3zm0 2h5v1H3z"
+            fill="currentColor"
+          />
         </svg>
       </template>
 
@@ -55,7 +61,11 @@
 
     <h3>Register component locally</h3>
 
-    <p>In a Vue single file component (SFC), import the <code>ColorPicker</code> plugin and register the component via the <code>components</code> property on the Vue instance.</p>
+    <p>
+      In a Vue single file component (SFC), import the
+      <code>ColorPicker</code> plugin and register the component via the
+      <code>components</code> property on the Vue instance.
+    </p>
 
     <pre><code>import { ColorPicker } from "vue-accessible-color-picker";
 
@@ -67,13 +77,21 @@ export default {
 
     <h3>Register component globally</h3>
 
-    <p>In your Vue project’s <code>main.js</code> file (i.e. where you call <code>app.mount</code>), import the <code>ColorPicker</code> plugin and register the component with <code>app.component</code>.</p>
+    <p>
+      In your Vue project’s
+      <code>main.js</code> file (i.e. where you call
+      <code>app.mount</code>), import the
+      <code>ColorPicker</code> plugin and register the component with
+      <code>app.component</code>.
+    </p>
 
     <pre><code>import { ColorPicker } from "vue-accessible-color-picker";
 
 app.component("ColorPicker", ColorPicker);</code></pre>
 
-    <p><b>HTML</b>:</p>
+    <p>
+      <b>HTML</b>:
+    </p>
 
     <pre><code>&lt;ColorPicker
   :color="{
@@ -131,7 +149,9 @@ app.component("ColorPicker", ColorPicker);</code></pre>
   &lt;/template&gt;
 &lt;/ColorPicker&gt;</code></pre>
 
-    <p><b>CSS</b>:</p>
+    <p>
+      <b>CSS</b>:
+    </p>
 
     <pre><code>.sr-only {
   position: absolute;
@@ -155,7 +175,7 @@ import { UPDATE_HSL } from "./hsl-store.actions.js"
 
 export default {
   components: {
-    ColorPicker
+    ColorPicker,
   },
 
   computed: {

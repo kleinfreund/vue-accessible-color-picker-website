@@ -17,7 +17,11 @@
 
     <h3>Register component locally</h3>
 
-    <p>In a Vue single file component (SFC), import the <code>ColorPicker</code> plugin and register the component via the <code>components</code> property on the Vue instance.</p>
+    <p>
+      In a Vue single file component (SFC), import the
+      <code>ColorPicker</code> plugin and register the component via the
+      <code>components</code> property on the Vue instance.
+    </p>
 
     <pre><code>import { ColorPicker } from "vue-accessible-color-picker/dist/vue-accessible-color-picker-unstyled";
 
@@ -29,19 +33,29 @@ export default {
 
     <h3>Register component globally</h3>
 
-    <p>In your Vue project’s <code>main.js</code> file (i.e. where you call <code>app.mount</code>), import the <code>ColorPicker</code> plugin and register the component with <code>app.component</code>.</p>
+    <p>
+      In your Vue project’s
+      <code>main.js</code> file (i.e. where you call
+      <code>app.mount</code>), import the
+      <code>ColorPicker</code> plugin and register the component with
+      <code>app.component</code>.
+    </p>
 
     <pre><code>import { ColorPicker } from "vue-accessible-color-picker/dist/vue-accessible-color-picker-unstyled";
 
 app.component("ColorPicker", ColorPicker);</code></pre>
 
-    <p><b>HTML</b>:</p>
+    <p>
+      <b>HTML</b>:
+    </p>
 
     <pre><code>&lt;ColorPicker
   color="{{ hslString }}"
 /&gt;</code></pre>
 
-    <p><b>CSS</b>:</p>
+    <p>
+      <b>CSS</b>:
+    </p>
 
     <pre><code>.vacp-color-space {
   height: 200px;
@@ -57,7 +71,7 @@ import { UPDATE_HSL } from "./hsl-store.actions.js"
 
 export default {
   components: {
-    ColorPicker
+    ColorPicker,
   },
 
   computed: {

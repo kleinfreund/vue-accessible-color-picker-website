@@ -12,14 +12,16 @@
       <ul>
         <li>
           Package:
-
-          <a href="https://www.npmjs.com/package/vue-accessible-color-picker"><b>npmjs.com</b>/package/vue-accessible-color-picker</a>
+          <a href="https://www.npmjs.com/package/vue-accessible-color-picker">
+            <b>npmjs.com</b>/package/vue-accessible-color-picker
+          </a>
         </li>
 
         <li>
           Repository:
-
-          <a href="https://github.com/kleinfreund/vue-accessible-color-picker"><b>github.com</b>/kleinfreund/vue-accessible-color-picker</a>
+          <a href="https://github.com/kleinfreund/vue-accessible-color-picker">
+            <b>github.com</b>/kleinfreund/vue-accessible-color-picker
+          </a>
         </li>
       </ul>
 
@@ -28,7 +30,10 @@
 
     <footer class="page-foot">
       <div class="wrapper">
-        <p>Made with softness by <a href="https://kleinfreund.de">Philipp Rudloff</a>.</p>
+        <p>
+          Made with softness by
+          <a href="https://kleinfreund.de">Philipp Rudloff</a>.
+        </p>
       </div>
     </footer>
   </div>
@@ -108,7 +113,8 @@ a {
 h1,
 h2,
 h3 {
-  font-family: Cambria, Caladea, Cochin, Georgia, Times, 'Times New Roman', serif;
+  font-family: Cambria, Caladea, Cochin, Georgia, Times, "Times New Roman",
+    serif;
 }
 
 h1,
@@ -150,7 +156,8 @@ pre {
 }
 
 code {
-  font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, Courier, monospace;
+  font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier,
+    monospace;
   font-size: inherit;
 }
 
