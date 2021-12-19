@@ -1,10 +1,8 @@
 import { createApp } from "vue";
 import { createRouter, createWebHistory } from "vue-router";
-import { createStore } from "vuex";
 
 import App from "./App.vue";
-import { hslStore } from "./hsl-store.js";
-import { FETCH_HSL } from "./hsl-store.actions.js";
+import { store, storeKey, FETCH_HSL } from "./store.js";
 
 const app = createApp(App)
 
@@ -24,11 +22,7 @@ const router = createRouter({
 
 app.use(router);
 
-const store = createStore({
-  ...hslStore,
-});
-
-app.use(store);
+app.use(store, storeKey);
 
 store.dispatch(FETCH_HSL);
 

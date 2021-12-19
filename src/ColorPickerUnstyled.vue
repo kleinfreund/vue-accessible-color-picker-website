@@ -63,32 +63,22 @@ app.component("ColorPicker", ColorPicker);</code></pre>
   </section>
 </template>
 
-<script>
-import { mapState } from "vuex"
+<script setup>
+import { computed } from "vue"
+import { useStore } from "vuex"
 import { ColorPicker } from "vue-accessible-color-picker/dist/vue-accessible-color-picker-unstyled";
 
-import { UPDATE_HSL } from "./hsl-store.actions.js"
+import { storeKey, UPDATE_HSL } from "./store.js"
 
-export default {
-  components: {
-    ColorPicker,
-  },
+const store = useStore(storeKey)
 
-  computed: {
-    ...mapState({
-      hsl: (state) => state.hsl,
-    }),
+const hslString = computed(() => {
+  const hsl = store.state.hsl
+  return `hsl(${hsl.h * 360} ${hsl.s * 100}% ${hsl.l * 100}% / ${hsl.a})`
+})
 
-    hslString() {
-      return `hsl(${this.hsl.h * 360} ${this.hsl.s * 100}% ${this.hsl.l * 100}% / ${this.hsl.a})`
-    }
-  },
-
-  methods: {
-    onColorChange(colorData) {
-      this.$store.dispatch(UPDATE_HSL, colorData.colors.hsl)
-    }
-  }
+function onColorChange(colorData) {
+  store.dispatch(UPDATE_HSL, colorData.colors.hsl)
 }
 </script>
 

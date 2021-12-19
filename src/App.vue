@@ -39,45 +39,33 @@
   </div>
 </template>
 
-<script>
-import { mapState } from "vuex"
+<script setup>
+import { computed, onBeforeMount, watch } from 'vue'
+import { useStore } from "vuex"
 
-import { UPDATE_HSL } from "./hsl-store.actions.js"
+import { storeKey, UPDATE_HSL } from "./store.js"
 
-export default {
-  name: 'App',
+const store = useStore(storeKey)
 
-  computed: {
-    ...mapState({
-      hsl: (state) => state.hsl,
-    }),
-  },
+const hsl = computed(() => store.state.hsl)
 
-  created() {
-    if (this.hsl === null) {
-      const date = new Date()
-      const dayOfTheYear = (Date.UTC(date.getFullYear(), date.getMonth(), date.getDate()) - Date.UTC(date.getFullYear(), 0, 0)) / 24 / 60 / 60 / 1000
+if (hsl === null) {
+  const date = new Date()
+  const dayOfTheYear = (Date.UTC(date.getFullYear(), date.getMonth(), date.getDate()) - Date.UTC(date.getFullYear(), 0, 0)) / 24 / 60 / 60 / 1000
 
-      const hsl = { h: dayOfTheYear / 360, s: 1, l: 0.5, a: 1 }
-      this.$store.dispatch(UPDATE_HSL, hsl)
-    }
-  },
-
-  mounted() {
-    document.body.style.setProperty('--hue', this.hsl.h)
-
-    this.colorPicker = () => import('./ColorPickerUnstyled.vue')
-    this.colorPickerUnstyled = this.colorPicker
-  },
-
-  watch: {
-    'hsl.h': function (newHue) {
-      if (document.body) {
-        document.body.style.setProperty('--hue', newHue)
-      }
-    }
-  },
+  const hsl = { h: dayOfTheYear / 360, s: 1, l: 0.5, a: 0.8 }
+  store.dispatch(UPDATE_HSL, hsl)
 }
+
+onBeforeMount(() => {
+  document.body.style.setProperty('--hue', hsl.value.h)
+})
+
+watch(() => hsl.value.h, (newHue) => {
+  if (document.body) {
+    document.body.style.setProperty('--hue', newHue)
+  }
+})
 </script>
 
 <style>
