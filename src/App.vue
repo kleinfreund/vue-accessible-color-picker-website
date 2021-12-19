@@ -49,7 +49,7 @@ const store = useStore(storeKey)
 
 const hsl = computed(() => store.state.hsl)
 
-if (hsl === null) {
+if (hsl.value === null) {
   const date = new Date()
   const dayOfTheYear = (Date.UTC(date.getFullYear(), date.getMonth(), date.getDate()) - Date.UTC(date.getFullYear(), 0, 0)) / 24 / 60 / 60 / 1000
 
