@@ -23,7 +23,7 @@
       <code>components</code> property on the Vue instance.
     </p>
 
-    <pre><code>import { ColorPicker } from "vue-accessible-color-picker/dist/vue-accessible-color-picker-unstyled";
+    <pre><code>import { ColorPicker } from "vue-accessible-color-picker/dist/vue-accessible-color-picker-unstyled.js";
 
 export default {
   components: {
@@ -41,7 +41,7 @@ export default {
       <code>app.component</code>.
     </p>
 
-    <pre><code>import { ColorPicker } from "vue-accessible-color-picker/dist/vue-accessible-color-picker-unstyled";
+    <pre><code>import { ColorPicker } from "vue-accessible-color-picker/dist/vue-accessible-color-picker-unstyled.js";
 
 app.component("ColorPicker", ColorPicker);</code></pre>
 
@@ -66,7 +66,7 @@ app.component("ColorPicker", ColorPicker);</code></pre>
 <script setup>
 import { computed } from "vue"
 import { useStore } from "vuex"
-import { ColorPicker } from "vue-accessible-color-picker/dist/vue-accessible-color-picker-unstyled";
+import { ColorPicker } from "vue-accessible-color-picker/dist/vue-accessible-color-picker-unstyled.js";
 
 import { storeKey, UPDATE_HSL } from "./store.js"
 
