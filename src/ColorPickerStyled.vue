@@ -170,7 +170,7 @@ app.component("ColorPicker", ColorPicker);</code></pre>
 <script setup>
 import { computed } from "vue"
 import { useStore } from "vuex"
-import { ColorPicker } from "vue-accessible-color-picker";
+import { ColorPicker } from "vue-accessible-color-picker/esm";
 
 import { storeKey, UPDATE_HSL } from "./store.js"
 
