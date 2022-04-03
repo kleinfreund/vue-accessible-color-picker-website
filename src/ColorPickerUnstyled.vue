@@ -15,35 +15,20 @@
 
     <h2>Usage</h2>
 
-    <h3>Register component locally</h3>
-
     <p>
-      In a Vue single file component (SFC), import the
-      <code>ColorPicker</code> plugin and register the component via the
-      <code>components</code> property on the Vue instance.
+      In a Vue single file component, import the
+      <code>ColorPicker</code> component.
     </p>
 
-    <pre><code>import { ColorPicker } from "vue-accessible-color-picker/unstyled";
-
-export default {
-  components: {
-    ColorPicker,
-  },
-}</code></pre>
-
-    <h3>Register component globally</h3>
-
     <p>
-      In your Vue project’s
-      <code>main.js</code> file (i.e. where you call
-      <code>app.mount</code>), import the
-      <code>ColorPicker</code> plugin and register the component with
-      <code>app.component</code>.
+      When using
+      <a
+        href="https://vuejs.org/guide/extras/composition-api-faq.html"
+      >Vue’s composition API</a>, you can directly use it in the file’s
+      <code>template</code> section.
     </p>
 
-    <pre><code>import { ColorPicker } from "vue-accessible-color-picker/unstyled";
-
-app.component("ColorPicker", ColorPicker);</code></pre>
+    <pre><code>import { ColorPicker } from "vue-accessible-color-picker/unstyled";</code></pre>
 
     <p>
       <b>HTML</b>:
@@ -66,7 +51,7 @@ app.component("ColorPicker", ColorPicker);</code></pre>
 <script setup>
 import { computed } from "vue"
 import { useStore } from "vuex"
-import { ColorPicker } from "vue-accessible-color-picker/esm/unstyled";
+import { ColorPicker } from "vue-accessible-color-picker/unstyled";
 
 import { storeKey, UPDATE_HSL } from "./store.js"
 
