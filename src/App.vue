@@ -41,9 +41,9 @@
 
 <script setup>
 import { computed, onBeforeMount, watch } from 'vue'
-import { useStore } from "vuex"
+import { useStore } from 'vuex'
 
-import { storeKey, UPDATE_HSL } from "./store.js"
+import { storeKey, UPDATE_HSL } from './store.js'
 
 const store = useStore(storeKey)
 

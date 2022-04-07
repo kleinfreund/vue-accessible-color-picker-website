@@ -1,18 +1,18 @@
 /**
- * @typedef {import("vuex").Store} Store
+ * @typedef {import('vuex').Store} Store
  * @template T
  */
 /**
- * @typedef {import("vue").InjectionKey} InjectionKey
+ * @typedef {import('vue').InjectionKey} InjectionKey
  * @template T
  */
 
-import { createStore } from "vuex";
+import { createStore } from 'vuex'
 
-export const FETCH_HSL = "fetchHsl";
-export const UPDATE_HSL = "updateHsl";
+export const FETCH_HSL = 'fetchHsl'
+export const UPDATE_HSL = 'updateHsl'
 
-const SET_HSL = "setHsl";
+const SET_HSL = 'setHsl'
 
 /** @typedef {{ hsl: string | null }} State */
 
@@ -25,19 +25,19 @@ const SET_HSL = "setHsl";
 
 const actions = {
   [FETCH_HSL]({ commit }) {
-    const hsl = JSON.parse(window.sessionStorage.getItem("hsl"));
-    commit(SET_HSL, hsl);
+    const hsl = JSON.parse(window.sessionStorage.getItem('hsl'))
+    commit(SET_HSL, hsl)
   },
 
   [UPDATE_HSL]({ commit }, hsl) {
-    window.sessionStorage.setItem("hsl", JSON.stringify(hsl));
-    commit(SET_HSL, hsl);
+    window.sessionStorage.setItem('hsl', JSON.stringify(hsl))
+    commit(SET_HSL, hsl)
   },
 }
 
 const mutations = {
   [SET_HSL](state, hsl) {
-    state.hsl = hsl;
+    state.hsl = hsl
   },
 }
 
@@ -45,4 +45,4 @@ export const store = createStore({
   state,
   actions,
   mutations,
-});
+})

@@ -72,7 +72,7 @@
       <code>template</code> section.
     </p>
 
-    <pre><code>import { ColorPicker } from "vue-accessible-color-picker";</code></pre>
+    <pre><code>import { ColorPicker } from 'vue-accessible-color-picker'</code></pre>
 
     <p>
       <b>HTML</b>:
@@ -153,11 +153,11 @@
 </template>
 
 <script setup>
-import { computed } from "vue"
-import { useStore } from "vuex"
-import { ColorPicker } from "vue-accessible-color-picker";
+import { computed } from 'vue'
+import { useStore } from 'vuex'
+import { ColorPicker } from 'vue-accessible-color-picker'
 
-import { storeKey, UPDATE_HSL } from "./store.js"
+import { storeKey, UPDATE_HSL } from './store.js'
 
 const store = useStore(storeKey)
 
