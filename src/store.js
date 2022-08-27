@@ -25,8 +25,12 @@ const SET_HSL = 'setHsl'
 
 const actions = {
   [FETCH_HSL]({ commit }) {
-    const hsl = JSON.parse(window.sessionStorage.getItem('hsl'))
-    commit(SET_HSL, hsl)
+    const hslString = window.sessionStorage.getItem('hsl')
+
+    if (hslString !== null) {
+      const hsl = JSON.parse(hslString)
+      commit(SET_HSL, hsl)
+    }
   },
 
   [UPDATE_HSL]({ commit }, hsl) {
