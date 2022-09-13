@@ -7,17 +7,17 @@ import { store, storeKey, FETCH_HSL } from './store.js'
 const app = createApp(App)
 
 const router = createRouter({
-  history: createWebHistory(),
-  routes: [
-    {
-      path: '/',
-      component: () => import('./ColorPickerStyled.vue'),
-    },
-    {
-      path: '/unstyled',
-      component: () => import('./ColorPickerUnstyled.vue'),
-    },
-  ],
+	history: createWebHistory(),
+	routes: [
+		{
+			path: '/',
+			component: () => import('./ColorPickerStyled.vue'),
+		},
+		{
+			path: '/unstyled',
+			component: () => import('./ColorPickerUnstyled.vue'),
+		},
+	],
 })
 
 app.use(router)

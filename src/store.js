@@ -18,35 +18,35 @@ const SET_HSL = 'setHsl'
 
 
 /** @type {State} */ const state = {
-  hsl: null,
+	hsl: null,
 }
 
 /** @type {InjectionKey<Store<State>>} */ export const storeKey = Symbol()
 
 const actions = {
-  [FETCH_HSL]({ commit }) {
-    const hslString = window.sessionStorage.getItem('hsl')
+	[FETCH_HSL]({ commit }) {
+		const hslString = window.sessionStorage.getItem('hsl')
 
-    if (hslString !== null) {
-      const hsl = JSON.parse(hslString)
-      commit(SET_HSL, hsl)
-    }
-  },
+		if (hslString !== null) {
+			const hsl = JSON.parse(hslString)
+			commit(SET_HSL, hsl)
+		}
+	},
 
-  [UPDATE_HSL]({ commit }, hsl) {
-    window.sessionStorage.setItem('hsl', JSON.stringify(hsl))
-    commit(SET_HSL, hsl)
-  },
+	[UPDATE_HSL]({ commit }, hsl) {
+		window.sessionStorage.setItem('hsl', JSON.stringify(hsl))
+		commit(SET_HSL, hsl)
+	},
 }
 
 const mutations = {
-  [SET_HSL](state, hsl) {
-    state.hsl = hsl
-  },
+	[SET_HSL](state, hsl) {
+		state.hsl = hsl
+	},
 }
 
 export const store = createStore({
-  state,
-  actions,
-  mutations,
+	state,
+	actions,
+	mutations,
 })
