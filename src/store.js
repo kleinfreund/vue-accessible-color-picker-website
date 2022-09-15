@@ -1,46 +1,36 @@
-/**
- * @typedef {import('vuex').Store} Store
- * @template T
- */
-/**
- * @typedef {import('vue').InjectionKey} InjectionKey
- * @template T
- */
-
 import { createStore } from 'vuex'
 
-export const FETCH_HSL = 'fetchHsl'
-export const UPDATE_HSL = 'updateHsl'
-
-const SET_HSL = 'setHsl'
-
-/** @typedef {{ hsl: string | null }} State */
-
-
-/** @type {State} */ const state = {
+const state = {
 	hsl: null,
 }
 
-/** @type {InjectionKey<Store<State>>} */ export const storeKey = Symbol()
+export const storeKey = Symbol()
 
 const actions = {
-	[FETCH_HSL]({ commit }) {
+	fetchHsl({ commit, dispatch }) {
 		const hslString = window.sessionStorage.getItem('hsl')
 
 		if (hslString !== null) {
-			const hsl = JSON.parse(hslString)
-			commit(SET_HSL, hsl)
+			commit('setHsl', JSON.parse(hslString))
+		} else {
+			const date = new Date()
+			const dayOfTheYear = (Date.UTC(date.getFullYear(), date.getMonth(), date.getDate()) - Date.UTC(date.getFullYear(), 0, 0)) / 24 / 60 / 60 / 1000
+			const hsl = { h: dayOfTheYear / 360, s: 1, l: 0.5, a: 0.8 }
+
+			dispatch('updateHsl', hsl)
 		}
 	},
 
-	[UPDATE_HSL]({ commit }, hsl) {
+	updateHsl({ commit }, hsl) {
 		window.sessionStorage.setItem('hsl', JSON.stringify(hsl))
-		commit(SET_HSL, hsl)
+		document.body.style.setProperty('--hue', hsl.h)
+
+		commit('setHsl', hsl)
 	},
 }
 
 const mutations = {
-	[SET_HSL](state, hsl) {
+	setHsl(state, hsl) {
 		state.hsl = hsl
 	},
 }
