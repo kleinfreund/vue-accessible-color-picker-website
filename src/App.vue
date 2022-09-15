@@ -1,9 +1,5 @@
 <template>
-	<h1>vue-accessible-color-picker</h1>
-
-	<p><a href="/">styled</a> | <a href="/unstyled">unstyled</a></p>
-
-	<h2>Links</h2>
+	<h1><a href="/">vue-accessible-color-picker</a></h1>
 
 	<ul>
 		<li>
@@ -22,13 +18,165 @@
 			</a>
 		</li>
 	</ul>
+	<h2>Demo</h2>
 
-	<router-view />
+	<ColorPicker
+		:color="hsl"
+		@color-change="onColorChange"
+	>
+		<template #hue-range-input-label>
+			<span class="visually-hidden">Hue</span>
+		</template>
 
-	<footer>
-		<p>Made with softness by <a href="https://kleinfreund.de">Philipp Rudloff</a>.</p>
-	</footer>
+		<template #alpha-range-input-label>
+			<span class="visually-hidden">Alpha</span>
+		</template>
+
+		<template #copy-button>
+			<span class="visually-hidden">Copy color</span>
+
+			<svg
+				aria-hidden="true"
+				xmlns="http://www.w3.org/2000/svg"
+				width="15"
+				height="15"
+			>
+				<path
+					d="M5 0v2H1v13h12v-3h-1v2H2V5h10v3h1V2H9V0zm1 1h2v2h3v1H3V3h3z"
+					fill="currentColor"
+				/>
+
+				<path
+					d="M10 7v2h5v2h-5v2l-3-3zM3 6h5v1H3zm0 2h3v1H3zm0 2h3v1H3zm0 2h5v1H3z"
+					fill="currentColor"
+				/>
+			</svg>
+		</template>
+
+		<template #format-switch-button>
+			<span class="visually-hidden">Switch format</span>
+
+			<svg
+				aria-hidden="true"
+				xmlns="http://www.w3.org/2000/svg"
+				width="16"
+				height="15"
+			>
+				<path d="M8 15l5-5-1-1-4 2-4-2-1 1zm4-9l1-1-5-5-5 5 1 1 4-2z" fill="currentColor" />
+			</svg>
+		</template>
+	</ColorPicker>
+
+	<h2>Installation</h2>
+
+	<pre><code>npm install vue-accessible-color-picker</code></pre>
+
+	<h2>Usage</h2>
+
+	<p>In a Vue single file component, import the <code>ColorPicker</code> component.</p>
+
+	<pre><code>import { ColorPicker } from 'vue-accessible-color-picker'</code></pre>
+
+	<p>If you want to customize the color picker completely by yourself, you can use the unstyled, smaller variant like so:</p>
+
+	<pre><code>import { ColorPicker } from 'vue-accessible-color-picker/unstyled'</code></pre>
+
+	<p>If you're using Vue's Options API, you will also need to register the component.</p>
+
+	<pre><code>export default {
+	name: 'MyComponent',
+
+	components: {
+		ColorPicker,
+	},
+}</code></pre>
+
+	<details>
+		<summary>Template and styles used for the demo above</summary>
+
+		<p><b>Template</b>:</p>
+
+		<pre><code>&lt;ColorPicker
+	:color="{
+		h: {{ hsl.h }},
+		s: {{ hsl.s }},
+		l: {{ hsl.l }},
+		a: {{ hsl.a }}
+	}"
+&gt;
+	&lt;template #hue-range-input-label&gt;
+		&lt;span class="visually-hidden"&gt;Hue&lt;/span&gt;
+	&lt;/template&gt;
+
+	&lt;template #alpha-range-input-label&gt;
+		&lt;span class="visually-hidden"&gt;Alpha&lt;/span&gt;
+	&lt;/template&gt;
+
+	&lt;template #copy-button&gt;
+		&lt;span class="visually-hidden"&gt;Copy color&lt;/span&gt;
+
+		&lt;svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="15" height="15"&gt;
+			&lt;path d="M5 0v2H1v13h12v-3h-1v2H2V5h10v3h1V2H9V0zm1 1h2v2h3v1H3V3h3z" fill="currentColor" /&gt;
+			&lt;path d="M10 7v2h5v2h-5v2l-3-3zM3 6h5v1H3zm0 2h3v1H3zm0 2h3v1H3zm0 2h5v1H3z" fill="currentColor" /&gt;
+		&lt;/svg&gt;
+	&lt;/template&gt;
+
+	&lt;template #format-switch-button&gt;
+		&lt;span class="visually-hidden"&gt;Switch format&lt;/span&gt;
+
+		&lt;svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="16" height="15"&gt;
+			&lt;path d="M8 15l5-5-1-1-4 2-4-2-1 1zm4-9l1-1-5-5-5 5 1 1 4-2z" fill="currentColor" /&gt;
+		&lt;/svg&gt;
+	&lt;/template&gt;
+&lt;/ColorPicker&gt;</code></pre>
+
+		<p><b>Styles</b>:</p>
+
+		<pre><code>.visually-hidden {
+	position: absolute;
+	overflow: hidden;
+	clip: rect(0 0 0 0);
+	width: 1px;
+	height: 1px;
+	margin: -1px;
+	padding: 0;
+	border: 0;
+	white-space: nowrap;
+}</code></pre>
+	</details>
+
+	<p>Made with love by <a href="https://kleinfreund.de">Philipp</a>.</p>
 </template>
+
+<script setup>
+import { computed } from 'vue'
+import { useStore } from 'vuex'
+import { ColorPicker } from 'vue-accessible-color-picker'
+
+import { storeKey } from './store.js'
+
+const store = useStore(storeKey)
+
+const hsl = computed(() => store.state.hsl)
+
+function onColorChange(colorData) {
+	store.dispatch('updateHsl', colorData.colors.hsl)
+}
+</script>
+
+<style scoped>
+.visually-hidden {
+	position: absolute;
+	overflow: hidden;
+	clip: rect(0 0 0 0);
+	width: 1px;
+	height: 1px;
+	margin: -1px;
+	padding: 0;
+	border: 0;
+	white-space: nowrap; /* 1. */
+}
+</style>
 
 <style>
 *,
@@ -74,7 +222,8 @@ h1,
 h2,
 p,
 ul,
-pre {
+pre,
+details {
 	margin-top: 1.25rem;
 	margin-bottom: 0;
 }
@@ -88,12 +237,17 @@ ul:first-child {
 
 pre {
 	overflow-x: auto;
-	padding: 1.25rem;
+	padding: 0.5rem 1rem;
+	border-radius: 4px;
 	color: #fff;
 	background-color: hsl(calc(var(--hue) * 360) 100% 10%);
 }
 
 code {
 	font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace;
+}
+
+.vacp-color-picker {
+	margin-top: 1.25rem;
 }
 </style>
