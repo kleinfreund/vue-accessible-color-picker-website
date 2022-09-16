@@ -1,6 +1,8 @@
 <template>
 	<h1><a href="/">vue-accessible-color-picker</a></h1>
 
+	<p>A color picker component for Vue.js 3.</p>
+
 	<ul>
 		<li>
 			Package:
@@ -153,12 +155,16 @@ import { computed } from 'vue'
 import { useStore } from 'vuex'
 import { ColorPicker } from 'vue-accessible-color-picker'
 
+/** @typedef {{ colors: any, cssColor: string }} ColorChangeEvent */
 import { storeKey } from './store.js'
 
 const store = useStore(storeKey)
 
 const hsl = computed(() => store.state.hsl)
 
+/**
+ * @param {ColorChangeEvent} colorData
+ */
 function onColorChange(colorData) {
 	store.dispatch('updateHsl', colorData.colors.hsl)
 }
@@ -210,7 +216,7 @@ footer {
 }
 
 a {
-	color: hsl(calc(var(--hue) * 360) 100% 10%);
+	color: hsl(calc(var(--hue) * 360) 100% 20%);
 }
 
 h1,
@@ -239,8 +245,7 @@ pre {
 	overflow-x: auto;
 	padding: 0.5rem 1rem;
 	border-radius: 4px;
-	color: #fff;
-	background-color: hsl(calc(var(--hue) * 360) 100% 10%);
+	background-color: hsl(calc(var(--hue) * 360) 100% 92.5%);
 }
 
 code {

@@ -1,12 +1,49 @@
+/**
+ * @typedef {import('vue').InjectionKey<T>} InjectionKey
+ * @template T
+ */
+/**
+ * @typedef {import('vuex').Store<State>} Store
+ * @template State
+ */
+/**
+ * @typedef {import('vuex').MutationTree<State>} MutationTree
+ * @template State
+ */
+/**
+ * @typedef {import('vuex').ActionTree<State, RootState>} ActionTree
+ * @template State
+ * @template RootState
+ */
+/**
+ * @typedef {import('vuex').ActionContext<State, RootState>} ActionContext
+ * @template State
+ * @template RootState
+ */
 import { createStore } from 'vuex'
 
+/** @typedef {import('vue-accessible-color-picker/types').ColorHsl} ColorHsl */
+
+/** @typedef {{ hsl: ColorHsl }} State */
+
+/** @type {State} */
 const state = {
-	hsl: null,
+	hsl: {
+		h: 270,
+		s: 1,
+		l: 0.5,
+		a: 0.8,
+	},
 }
 
-export const storeKey = Symbol()
+/** @type {InjectionKey<Store<State>>} */
+export const storeKey = Symbol('hslStore')
 
+/** @type {ActionTree<State, State>} */
 const actions = {
+	/**
+	 * @param {ActionContext<State, State>} state
+	 */
 	fetchHsl({ commit, dispatch }) {
 		const hslString = window.sessionStorage.getItem('hsl')
 
@@ -21,15 +58,24 @@ const actions = {
 		}
 	},
 
+	/**
+	 * @param {ActionContext<State, State>} state
+	 * @param {ColorHsl} hsl
+	 */
 	updateHsl({ commit }, hsl) {
 		window.sessionStorage.setItem('hsl', JSON.stringify(hsl))
-		document.body.style.setProperty('--hue', hsl.h)
+		document.body.style.setProperty('--hue', String(hsl.h))
 
 		commit('setHsl', hsl)
 	},
 }
 
+/** @type {MutationTree<State>} */
 const mutations = {
+	/**
+	 * @param {State} state
+	 * @param {ColorHsl} hsl
+	 */
 	setHsl(state, hsl) {
 		state.hsl = hsl
 	},
