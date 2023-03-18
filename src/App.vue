@@ -20,6 +20,7 @@
 			</a>
 		</li>
 	</ul>
+
 	<h2>Demo</h2>
 
 	<ColorPicker
