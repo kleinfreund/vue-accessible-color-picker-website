@@ -104,8 +104,8 @@
 import { computed } from 'vue'
 import { useStore } from 'vuex'
 import { ColorPicker } from 'vue-accessible-color-picker'
+/** @typedef {import('vue-accessible-color-picker/types/index.d.ts').ColorChangeEvent} ColorChangeEvent */
 
-/** @typedef {{ colors: any, cssColor: string }} ColorChangeEvent */
 import { storeKey } from './store.js'
 
 const store = useStore(storeKey)
@@ -113,10 +113,10 @@ const store = useStore(storeKey)
 const hsl = computed(() => store.state.hsl)
 
 /**
- * @param {ColorChangeEvent} colorData
+ * @param {ColorChangeEvent} event
  */
-function onColorChange(colorData) {
-	store.dispatch('updateHsl', colorData.colors.hsl)
+function onColorChange(event) {
+	store.dispatch('updateHsl', event.colors.hsl)
 }
 </script>
 
