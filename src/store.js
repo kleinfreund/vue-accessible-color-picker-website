@@ -22,7 +22,7 @@
  */
 import { createStore } from 'vuex'
 
-/** @typedef {import('vue-accessible-color-picker/types/index.d.js').ColorHsl} ColorHsl */
+/** @typedef {import('vue-accessible-color-picker/types/index.d.ts').ColorHsl} ColorHsl */
 
 /** @typedef {{ hsl: ColorHsl }} State */
 
