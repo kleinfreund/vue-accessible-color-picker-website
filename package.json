@@ -12,6 +12,7 @@
 		"type": "git",
 		"url": "https://github.com/kleinfreund/vue-accessible-color-picker-website.git"
 	},
+	"type": "module",
 	"scripts": {
 		"start": "vite",
 		"build": "vite build",
