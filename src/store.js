@@ -3,26 +3,26 @@
  * @template T
  */
 /**
- * @typedef {import('vuex').Store<State>} Store
+ * @typedef {import('vuex/types/index.d.js').Store<State>} Store
  * @template State
  */
 /**
- * @typedef {import('vuex').MutationTree<State>} MutationTree
+ * @typedef {import('vuex/types/index.d.js').MutationTree<State>} MutationTree
  * @template State
  */
 /**
- * @typedef {import('vuex').ActionTree<State, RootState>} ActionTree
+ * @typedef {import('vuex/types/index.d.js').ActionTree<State, RootState>} ActionTree
  * @template State
  * @template RootState
  */
 /**
- * @typedef {import('vuex').ActionContext<State, RootState>} ActionContext
+ * @typedef {import('vuex/types/index.d.js').ActionContext<State, RootState>} ActionContext
  * @template State
  * @template RootState
  */
 import { createStore } from 'vuex'
 
-/** @typedef {import('vue-accessible-color-picker/types').ColorHsl} ColorHsl */
+/** @typedef {import('vue-accessible-color-picker/types/index.d.js').ColorHsl} ColorHsl */
 
 /** @typedef {{ hsl: ColorHsl }} State */
 
