@@ -104,7 +104,7 @@
 import { computed } from 'vue'
 import { useStore } from 'vuex'
 import { ColorPicker } from 'vue-accessible-color-picker'
-/** @typedef {import('vue-accessible-color-picker/types/index.d.ts').ColorChangeEvent} ColorChangeEvent */
+/** @typedef {import('vue-accessible-color-picker/types/index.d.js').ColorChangeEvent} ColorChangeEvent */
 
 import { storeKey } from './store.js'
 
