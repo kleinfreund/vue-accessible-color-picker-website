@@ -22,7 +22,7 @@
  */
 import { createStore } from 'vuex'
 
-/** @typedef {import('vue-accessible-color-picker/types/index.d.ts').ColorHsl} ColorHsl */
+/** @typedef {import('vue-accessible-color-picker').ColorHsl} ColorHsl */
 
 /** @typedef {{ hsl: ColorHsl }} State */
 
@@ -30,8 +30,8 @@ import { createStore } from 'vuex'
 const state = {
 	hsl: {
 		h: 270,
-		s: 1,
-		l: 0.5,
+		s: 100,
+		l: 50,
 		a: 0.8,
 	},
 }
@@ -52,7 +52,7 @@ const actions = {
 		} else {
 			const date = new Date()
 			const dayOfTheYear = (Date.UTC(date.getFullYear(), date.getMonth(), date.getDate()) - Date.UTC(date.getFullYear(), 0, 0)) / 24 / 60 / 60 / 1000
-			const hsl = { h: dayOfTheYear / 360, s: 1, l: 0.5, a: 0.8 }
+			const hsl = { h: dayOfTheYear % 360, s: 100, l: 50, a: 0.8 }
 
 			dispatch('updateHsl', hsl)
 		}

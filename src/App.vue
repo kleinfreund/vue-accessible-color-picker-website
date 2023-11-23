@@ -1,7 +1,7 @@
 <template>
 	<h1><a href="/">vue-accessible-color-picker</a></h1>
 
-	<p>A color picker component for Vue.js 3.</p>
+	<p>A color picker component for Vue.js.</p>
 
 	<ul>
 		<li>
@@ -42,23 +42,21 @@
 
 	<h2>Usage</h2>
 
-	<p>In a Vue single file component, import the <code>ColorPicker</code> component.</p>
+	<p>In a Vue single file component, import the <code>ColorPicker</code> component and its styles.</p>
 
-	<pre><code>import { ColorPicker } from 'vue-accessible-color-picker'</code></pre>
+	<pre><code>&lt;template&gt;
+	&lt;ColorPicker /&gt;
+&lt;/template&gt;
 
-	<p>If you want to customize the color picker completely by yourself, you can use the unstyled, smaller variant like so:</p>
+&lt;script setup&gt;
+import { ColorPicker } from 'vue-accessible-color-picker'
+&lt;/script&gt;
 
-	<pre><code>import { ColorPicker } from 'vue-accessible-color-picker/unstyled'</code></pre>
+&lt;style&gt;
+@import url('vue-accessible-color-picker/styles');
+&lt;/style&gt;</code></pre>
 
-	<p>If you're using Vue's Options API, you will also need to register the component.</p>
-
-	<pre><code>export default {
-	name: 'MyComponent',
-
-	components: {
-		ColorPicker,
-	},
-}</code></pre>
+	<p>You can also register the component and import the styles globally.</p>
 
 	<details>
 		<summary>Template and styles used for the demo above</summary>
@@ -104,7 +102,7 @@
 import { computed } from 'vue'
 import { useStore } from 'vuex'
 import { ColorPicker } from 'vue-accessible-color-picker'
-/** @typedef {import('vue-accessible-color-picker/types/index.d.js').ColorChangeEvent} ColorChangeEvent */
+/** @typedef {import('vue-accessible-color-picker').ColorChangeDetail} ColorChangeDetail */
 
 import { storeKey } from './store.js'
 
@@ -113,7 +111,7 @@ const store = useStore(storeKey)
 const hsl = computed(() => store.state.hsl)
 
 /**
- * @param {ColorChangeEvent} event
+ * @param {ColorChangeDetail} event
  */
 function onColorChange(event) {
 	store.dispatch('updateHsl', event.colors.hsl)
@@ -130,11 +128,13 @@ function onColorChange(event) {
 	margin: -1px;
 	padding: 0;
 	border: 0;
-	white-space: nowrap; /* 1. */
+	white-space: nowrap;
 }
 </style>
 
 <style>
+@import url('vue-accessible-color-picker/styles');
+
 *,
 *::before,
 *::after {
@@ -142,14 +142,12 @@ function onColorChange(event) {
 }
 
 body {
-	--hue: 0.75;
-
 	tab-size: 2;
 	margin: 0;
 	font-size: 1em;
 	line-height: 1.5;
 	font-family: Lato, Numero, sans-serif;
-	background-color: hsl(calc(var(--hue) * 360) 50% 95%);
+	background-color: hsl(var(--hue, 270) 50% 95%);
 }
 
 main {
@@ -166,7 +164,7 @@ footer {
 }
 
 a {
-	color: hsl(calc(var(--hue) * 360) 100% 20%);
+	color: hsl(var(--hue, 270) 100% 20%);
 }
 
 h1,
@@ -195,7 +193,7 @@ pre {
 	overflow-x: auto;
 	padding: 0.5rem 1rem;
 	border-radius: 4px;
-	background-color: hsl(calc(var(--hue) * 360) 100% 92.5%);
+	background-color: hsl(var(--hue, 270) 100% 92.5%);
 }
 
 code {
