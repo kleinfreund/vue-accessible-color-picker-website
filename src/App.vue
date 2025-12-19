@@ -24,7 +24,7 @@
 	<h2>Demo</h2>
 
 	<ColorPicker
-		:color="hsl"
+		:color="store.hsl"
 		@color-change="onColorChange"
 	>
 		<template #hue-range-input-label>
@@ -65,10 +65,10 @@ import { ColorPicker } from 'vue-accessible-color-picker'
 
 		<pre><code>&lt;ColorPicker
 	:color="{
-		h: {{ hsl.h }},
-		s: {{ hsl.s }},
-		l: {{ hsl.l }},
-		a: {{ hsl.a }}
+		h: {{ store.hsl.h }},
+		s: {{ store.hsl.s }},
+		l: {{ store.hsl.l }},
+		a: {{ store.hsl.a }}
 	}"
 &gt;
 	&lt;template #hue-range-input-label&gt;
@@ -99,22 +99,20 @@ import { ColorPicker } from 'vue-accessible-color-picker'
 </template>
 
 <script setup>
-import { computed } from 'vue'
-import { useStore } from 'vuex'
 import { ColorPicker } from 'vue-accessible-color-picker'
+
+import { useStore } from './store.js'
+
 /** @typedef {import('vue-accessible-color-picker').ColorChangeDetail} ColorChangeDetail */
 
-import { storeKey } from './store.js'
-
-const store = useStore(storeKey)
-
-const hsl = computed(() => store.state.hsl)
+const store = useStore()
+store.fetchHsl()
 
 /**
  * @param {ColorChangeDetail} event
  */
 function onColorChange(event) {
-	store.dispatch('updateHsl', event.colors.hsl)
+	store.setHsl(event.colors.hsl)
 }
 </script>
 

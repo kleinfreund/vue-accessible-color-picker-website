@@ -1,12 +1,9 @@
 import { createApp } from 'vue'
 
 import App from './App.vue'
-import { store, storeKey } from './store.js'
+import { createPinia } from 'pinia'
 
 const app = createApp(App)
-
-app.use(store, storeKey)
-
-store.dispatch('fetchHsl')
+app.use(createPinia())
 
 app.mount('#app')
