@@ -38,7 +38,7 @@
 
 	<h2>Installation</h2>
 
-	<pre><code>npm install vue-accessible-color-picker</code></pre>
+	<pre><code>npm install vue-accessible-color-picker vue@^3.5.0 colorjs.io@~0.6.0-beta.3</code></pre>
 
 	<h2>Usage</h2>
 
