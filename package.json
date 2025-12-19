@@ -19,9 +19,10 @@
 		"preview": "vite preview"
 	},
 	"dependencies": {
+		"colorjs.io": "0.6.0-beta.3",
 		"pinia": "3.0.4",
 		"vue": "3.5.26",
-		"vue-accessible-color-picker": "5.3.1"
+		"vue-accessible-color-picker": "6.0.0"
 	},
 	"devDependencies": {
 		"@vitejs/plugin-vue": "6.0.3",

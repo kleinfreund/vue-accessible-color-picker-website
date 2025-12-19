@@ -1,43 +1,35 @@
+import Color from 'colorjs.io'
 import { defineStore } from 'pinia'
 import { ref } from 'vue'
 
-/** @typedef {import('vue-accessible-color-picker').ColorHsl} ColorHsl */
-
 export const useStore = defineStore('store', () => {
-	const hsl = ref({
-		h: 270,
-		s: 100,
-		l: 50,
-		a: 0.8,
-	})
+	const color = ref(new Color('hsl', [270, 100, 50], 0.8))
 
-	function fetchHsl() {
+	function fetchColor() {
 		const hslString = window.sessionStorage.getItem('hsl')
-
 		if (hslString !== null) {
-			hsl.value = JSON.parse(hslString)
+			color.value = new Color(hslString)
 		} else {
 			const date = new Date()
 			const dayOfTheYear = (Date.UTC(date.getFullYear(), date.getMonth(), date.getDate()) - Date.UTC(date.getFullYear(), 0, 0)) / 24 / 60 / 60 / 1000
-			const hsl = { h: dayOfTheYear % 360, s: 100, l: 50, a: 0.8 }
 
-			setHsl(hsl)
+			updateColor(new Color('hsl', [dayOfTheYear % 360, 100, 50], 0.8))
 		}
 	}
 
 	/**
-	 * @param {ColorHsl} newHsl
+	 * @param {Color} newColor
 	 */
-	function setHsl(newHsl) {
-		window.sessionStorage.setItem('hsl', JSON.stringify(newHsl))
-		document.body.style.setProperty('--hue', String(newHsl.h))
+	function updateColor(newColor) {
+		window.sessionStorage.setItem('hsl', newColor.toString({ format: 'hsl' }))
+		document.body.style.setProperty('--hue', String(newColor.h ?? 0))
 
-		hsl.value = newHsl
+		color.value = newColor
 	}
 
 	return {
-		hsl,
-		fetchHsl,
-		setHsl,
+		color,
+		fetchColor,
+		updateColor,
 	}
 })
